@@ -28,7 +28,7 @@ create table regions(
 create table license_types(
     license_type_id int unique not null generated always as identity,
     license_type varchar(30) unique not null,
-    primary key (lincense_type_id)
+    primary key (license_type_id)
 );
 
 create table licenses(
@@ -36,7 +36,7 @@ create table licenses(
     license_name varchar(30) unique not null,
     description varchar(255) not null,
     lp_cost int not null,
-    license_type_id not null,
+    license_type_id int not null,
     primary key (license_id),
     foreign key (license_type_id) references license_types(license_type_id)
 );
