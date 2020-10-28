@@ -54,3 +54,53 @@ insert into regions (job_id) values (11),(11),(11),(11),(11),(11),(11),(11),(11)
 -- main region, unlocked by Quickening 3, unlocked by Cuchulainn, unlocked by Hashmal, unlocked by Belias, unlocked by Ultima, unlocked by Famfrit, unlocked by Zalera, unlocked by Adrammelech, unlocked by Quickening 4, unlocked by Exodus or Zeromus
 insert into regions (job_id) values (12),(12),(12),(12),(12),(12),(12),(12),(12),(12),(12);
 
+-- Essentials licenses
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Essentials', 'Attack & Items', 0, 1);
+
+-- Black Magick licenses
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Black Magick 1', 'Fire & Thunder', 15, 2);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Black Magick 2', 'Blizzard & Blind', 20, 2);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Black Magick 3', 'Aqua & Silence', 25, 2);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Black Magick 4', 'Aero & Sleep', 30, 2);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Black Magick 5', 'Fira & Poison', 40, 2);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Black Magick 6', 'Thundara & Blizzara', 50, 2);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Black Magick 7', 'Bio & Blindga', 60, 2);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Black Magick 8', 'Aeroga & Silencega', 70, 2);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Black Magick 9', 'Firaga & Thundaga', 90, 2);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Black Magick 10', 'Blizzaga & Sleepga', 90, 2);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Black Magick 11', 'Shock & Toxify', 100, 2);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Black Magick 12', 'Flare & Scourge', 120, 2);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Black Magick 1', 'Scathe', 165, 2);
+
+-- White Magick licenses
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('White Magick 1', 'Cure & Blindna', 15, 3);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('White Magick 2', 'Poisona & Vox', 20, 3);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('White Magick 3', 'Shell & Protect', 25, 3);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('White Magick 4', 'Cura & Raise', 30, 3);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('White Magick 5', 'Stona & Dispel', 40, 3);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('White Magick 6', 'Curaga & Regen', 50, 3);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('White Magick 7', 'Esuna & Cleanse', 60, 3);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('White Magick 8', 'Confuse & Faith', 70, 3);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('White Magick 9', 'Curaja & Bravery', 80, 3);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('White Magick 10', 'Arise & Dispelga', 90, 3);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('White Magick 11', 'Holy & Esunaga', 100, 3);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('White Magick 12', 'Protectga & Shellga', 110, 3);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('White Magick 13', 'Renew', 155, 3);
+
+-- Green Magick licenses
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Green Magick 1', 'Oil & Decoy', 40, 4);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Green Magick 2', 'Reverse & Drain', 50, 4);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Green Magick 3', 'Bubble & Syphon', 90, 4);
+
+-- Time Magick licenses
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Time Magick 1', 'Slow & Immobilize', 20, 5);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Time Magick 2', 'Disable & Reflect', 30, 5);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Time Magick 3', 'Vanish & Balance', 40, 5);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Time Magick 4', 'Haste & Gravity', 50, 5);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Time Magick 5', 'Stop & Bleed', 60, 5);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Time Magick 6', 'Break & Countdown', 70, 5);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Time Magick 7', 'Float & Berserk', 80, 5);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Time Magick 8', 'Warp & Vanishga', 90, 5);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Time Magick 9', 'Slowga & Reflectga', 100, 5);
+insert into licenses (license_name, description, lp_cost, license_type_id) values ('Time Magick 10', 'Hastega & Graviga', 125, 5);
+
