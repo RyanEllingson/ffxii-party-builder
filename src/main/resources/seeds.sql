@@ -11,8 +11,8 @@ insert into license_types (license_type) values ('Essentials'), ('Black Magick')
 insert into regions (job_id, description) values (1, 'Main region'),(1, 'Unlocked by Famfrit'),(1, 'Unlocked by Quickening 1'),(1, 'Unlocked by Ultima or Zodiark'),(1, 'Unlocked by Chaos'),(1, 'Unlocked by Shemhazai');
 
 -- Shikari regions
--- main region, unlocked by Quickening 2, unlocked by Mateus, unlocked by Cuchulainn, unlocked by Ultima, unlocked by Exodus, unlocked by Quickening 1, unlocked by Hashmal, unlocked by Zalera, unlocked by Quickening 3, unlocked by Shemhazai, unlocked by Quickening 4
-insert into regions (job_id, description) values (2, 'Main region'),(2, 'Unlocked by Quickening 2'),(2, 'Unlocked by Mateus'),(2, 'Unlocked by Cuchulainn'),(2, 'Unlocked by Ultima'),(2, 'Unlocked by Exodus'),(2, 'Unlocked by Quickening 1'),(2, 'Unlocked by Hashmal'),(2, 'Unlocked by Zalera'),(2, 'Unlocked by Quickening 3'),(2, 'Unlocked by Shemhazai'),(2, 'Unlocked by Quickening 4');
+-- main region, unlocked by Quickening 2, unlocked by Adrammelech, unlocked by Mateus, unlocked by Cuchulainn, unlocked by Ultima, unlocked by Exodus, unlocked by Quickening 1, unlocked by Hashmal, unlocked by Zalera, unlocked by Quickening 3, unlocked by Shemhazai, unlocked by Quickening 4
+insert into regions (job_id, description) values (2, 'Main region'),(2, 'Unlocked by Quickening 2'),(2, 'Unlocked by Adrammelech'),(2, 'Unlocked by Mateus'),(2, 'Unlocked by Cuchulainn'),(2, 'Unlocked by Ultima'),(2, 'Unlocked by Exodus'),(2, 'Unlocked by Quickening 1'),(2, 'Unlocked by Hashmal'),(2, 'Unlocked by Zalera'),(2, 'Unlocked by Quickening 3'),(2, 'Unlocked by Shemhazai'),(2, 'Unlocked by Quickening 4');
 
 -- Machinist regions
 -- main region, unlocked by Exodus, unlocked by Chaos, unlocked by Famfrit, unlocked by Zeromus, unlocked by Shemhazai, unlocked by Cuchulainn, unlocked by Zodiark, unlocked by Ultima or Quickening 4
@@ -419,3 +419,293 @@ insert into licenses (license_name, description, lp_cost, license_type_id, subty
 insert into licenses (license_name, description, lp_cost, license_type_id, subtype) values ('Mystic Armor 13', 'Circlet & Lordly Robes', 110, 11, 'Mystic Armor');
 
 insert into licenses (license_name, description, lp_cost, license_type_id, subtype) values ('Genji Armor', 'Genji Shield, Genji Armor, Genji Helm, & Genji Gloves', 190, 11, 'Genji Armor');
+
+-- Archer license links
+-- Main region
+-- HP Plus
+insert into license_links (license_id, region_id) values (91, 1);
+insert into license_links (license_id, region_id) values (92, 1);
+insert into license_links (license_id, region_id) values (93, 1);
+insert into license_links (license_id, region_id) values (94, 1);
+insert into license_links (license_id, region_id) values (95, 1);
+insert into license_links (license_id, region_id) values (96, 1);
+insert into license_links (license_id, region_id) values (97, 1);
+insert into license_links (license_id, region_id) values (98, 1);
+
+-- Bows
+insert into license_links (license_id, region_id) values (167, 1);
+insert into license_links (license_id, region_id) values (168, 1);
+insert into license_links (license_id, region_id) values (169, 1);
+insert into license_links (license_id, region_id) values (170, 1);
+insert into license_links (license_id, region_id) values (171, 1);
+insert into license_links (license_id, region_id) values (172, 1);
+insert into license_links (license_id, region_id) values (173, 1);
+insert into license_links (license_id, region_id) values (174, 1);
+insert into license_links (license_id, region_id) values (175, 1);
+
+-- Augmentations
+insert into license_links (license_id, region_id) values (103, 1);
+insert into license_links (license_id, region_id) values (104, 1);
+insert into license_links (license_id, region_id) values (106, 1);
+insert into license_links (license_id, region_id) values (107, 1);
+insert into license_links (license_id, region_id) values (108, 1);
+insert into license_links (license_id, region_id) values (110, 1);
+insert into license_links (license_id, region_id) values (130, 1);
+insert into license_links (license_id, region_id) values (114, 1);
+insert into license_links (license_id, region_id) values (115, 1);
+insert into license_links (license_id, region_id) values (155, 1);
+insert into license_links (license_id, region_id) values (156, 1);
+insert into license_links (license_id, region_id) values (157, 1);
+insert into license_links (license_id, region_id) values (161, 1);
+insert into license_links (license_id, region_id) values (162, 1);
+insert into license_links (license_id, region_id) values (163, 1);
+insert into license_links (license_id, region_id) values (164, 1);
+insert into license_links (license_id, region_id) values (165, 1);
+insert into license_links (license_id, region_id) values (166, 1);
+insert into license_links (license_id, region_id) values (149, 1);
+insert into license_links (license_id, region_id) values (150, 1);
+insert into license_links (license_id, region_id) values (151, 1);
+
+-- Technicks
+insert into license_links (license_id, region_id) values (44, 1);
+insert into license_links (license_id, region_id) values (47, 1);
+insert into license_links (license_id, region_id) values (45, 1);
+insert into license_links (license_id, region_id) values (46, 1);
+insert into license_links (license_id, region_id) values (52, 1);
+insert into license_links (license_id, region_id) values (56, 1);
+insert into license_links (license_id, region_id) values (53, 1);
+insert into license_links (license_id, region_id) values (58, 1);
+insert into license_links (license_id, region_id) values (61, 1);
+insert into license_links (license_id, region_id) values (65, 1);
+insert into license_links (license_id, region_id) values (67, 1);
+insert into license_links (license_id, region_id) values (60, 1);
+
+-- Light Armor
+insert into license_links (license_id, region_id) values (281, 1);
+insert into license_links (license_id, region_id) values (282, 1);
+insert into license_links (license_id, region_id) values (283, 1);
+insert into license_links (license_id, region_id) values (284, 1);
+insert into license_links (license_id, region_id) values (285, 1);
+insert into license_links (license_id, region_id) values (286, 1);
+insert into license_links (license_id, region_id) values (287, 1);
+insert into license_links (license_id, region_id) values (288, 1);
+insert into license_links (license_id, region_id) values (289, 1);
+insert into license_links (license_id, region_id) values (290, 1);
+insert into license_links (license_id, region_id) values (291, 1);
+insert into license_links (license_id, region_id) values (292, 1);
+insert into license_links (license_id, region_id) values (293, 1);
+
+-- Accessories
+insert into license_links (license_id, region_id) values (68, 1);
+insert into license_links (license_id, region_id) values (69, 1);
+insert into license_links (license_id, region_id) values (70, 1);
+insert into license_links (license_id, region_id) values (71, 1);
+insert into license_links (license_id, region_id) values (72, 1);
+insert into license_links (license_id, region_id) values (73, 1);
+insert into license_links (license_id, region_id) values (74, 1);
+insert into license_links (license_id, region_id) values (75, 1);
+insert into license_links (license_id, region_id) values (76, 1);
+insert into license_links (license_id, region_id) values (77, 1);
+insert into license_links (license_id, region_id) values (78, 1);
+insert into license_links (license_id, region_id) values (79, 1);
+insert into license_links (license_id, region_id) values (80, 1);
+insert into license_links (license_id, region_id) values (81, 1);
+insert into license_links (license_id, region_id) values (82, 1);
+insert into license_links (license_id, region_id) values (83, 1);
+insert into license_links (license_id, region_id) values (84, 1);
+insert into license_links (license_id, region_id) values (85, 1);
+insert into license_links (license_id, region_id) values (86, 1);
+insert into license_links (license_id, region_id) values (87, 1);
+insert into license_links (license_id, region_id) values (88, 1);
+insert into license_links (license_id, region_id) values (89, 1);
+insert into license_links (license_id, region_id) values (90, 1);
+
+-- Unlocked by Famfrit
+-- HP Plus
+insert into license_links (license_id, region_id) values (101, 2);
+insert into license_links (license_id, region_id) values (102, 2);
+
+-- Unlocked by Quickening 1
+-- White Magicks
+insert into license_links (license_id, region_id) values (18, 3);
+
+-- Unlocked by Ultima or Zodiark
+-- Technicks
+insert into license_links (license_id, region_id) values (55, 4);
+insert into license_links (license_id, region_id) values (57, 4);
+
+-- Unlocked by Chaos
+-- Magick Lores
+insert into license_links (license_id, region_id) values (131, 5);
+insert into license_links (license_id, region_id) values (132, 5);
+insert into license_links (license_id, region_id) values (133, 5);
+insert into license_links (license_id, region_id) values (134, 5);
+insert into license_links (license_id, region_id) values (135, 5);
+
+-- Unlocked by Shemhazai
+-- Heavy Armor
+insert into license_links (license_id, region_id) values (303, 6);
+insert into license_links (license_id, region_id) values (304, 6);
+insert into license_links (license_id, region_id) values (305, 6);
+
+-- Shikari license links
+-- Main region
+-- Weapons
+insert into license_links (license_id, region_id) values (176, 7);
+insert into license_links (license_id, region_id) values (177, 7);
+insert into license_links (license_id, region_id) values (178, 7);
+insert into license_links (license_id, region_id) values (179, 7);
+insert into license_links (license_id, region_id) values (180, 7);
+insert into license_links (license_id, region_id) values (181, 7);
+insert into license_links (license_id, region_id) values (182, 7);
+
+-- Shields
+insert into license_links (license_id, region_id) values (271, 7);
+insert into license_links (license_id, region_id) values (272, 7);
+insert into license_links (license_id, region_id) values (273, 7);
+insert into license_links (license_id, region_id) values (274, 7);
+insert into license_links (license_id, region_id) values (275, 7);
+insert into license_links (license_id, region_id) values (276, 7);
+insert into license_links (license_id, region_id) values (277, 7);
+
+-- Light Armor
+insert into license_links (license_id, region_id) values (281, 7);
+insert into license_links (license_id, region_id) values (282, 7);
+insert into license_links (license_id, region_id) values (283, 7);
+insert into license_links (license_id, region_id) values (284, 7);
+insert into license_links (license_id, region_id) values (285, 7);
+insert into license_links (license_id, region_id) values (286, 7);
+insert into license_links (license_id, region_id) values (287, 7);
+insert into license_links (license_id, region_id) values (288, 7);
+insert into license_links (license_id, region_id) values (289, 7);
+insert into license_links (license_id, region_id) values (290, 7);
+insert into license_links (license_id, region_id) values (291, 7);
+insert into license_links (license_id, region_id) values (292, 7);
+insert into license_links (license_id, region_id) values (293, 7);
+
+-- Augmentations
+insert into license_links (license_id, region_id) values (103, 7);
+insert into license_links (license_id, region_id) values (104, 7);
+insert into license_links (license_id, region_id) values (106, 7);
+insert into license_links (license_id, region_id) values (107, 7);
+insert into license_links (license_id, region_id) values (108, 7);
+insert into license_links (license_id, region_id) values (110, 7);
+insert into license_links (license_id, region_id) values (111, 7);
+insert into license_links (license_id, region_id) values (113, 7);
+insert into license_links (license_id, region_id) values (146, 7);
+insert into license_links (license_id, region_id) values (147, 7);
+insert into license_links (license_id, region_id) values (114, 7);
+insert into license_links (license_id, region_id) values (115, 7);
+insert into license_links (license_id, region_id) values (116, 7);
+insert into license_links (license_id, region_id) values (117, 7);
+insert into license_links (license_id, region_id) values (118, 7);
+insert into license_links (license_id, region_id) values (119, 7);
+insert into license_links (license_id, region_id) values (130, 7);
+insert into license_links (license_id, region_id) values (131, 7);
+insert into license_links (license_id, region_id) values (132, 7);
+insert into license_links (license_id, region_id) values (133, 7);
+insert into license_links (license_id, region_id) values (134, 7);
+insert into license_links (license_id, region_id) values (155, 7);
+insert into license_links (license_id, region_id) values (156, 7);
+insert into license_links (license_id, region_id) values (157, 7);
+insert into license_links (license_id, region_id) values (164, 7);
+insert into license_links (license_id, region_id) values (165, 7);
+insert into license_links (license_id, region_id) values (166, 7);
+insert into license_links (license_id, region_id) values (149, 7);
+insert into license_links (license_id, region_id) values (150, 7);
+insert into license_links (license_id, region_id) values (151, 7);
+
+-- Technicks
+insert into license_links (license_id, region_id) values (47, 7);
+insert into license_links (license_id, region_id) values (45, 7);
+insert into license_links (license_id, region_id) values (57, 7);
+insert into license_links (license_id, region_id) values (58, 7);
+insert into license_links (license_id, region_id) values (61, 7);
+insert into license_links (license_id, region_id) values (48, 7);
+
+-- HP Plus
+insert into license_links (license_id, region_id) values (91, 7);
+insert into license_links (license_id, region_id) values (92, 7);
+insert into license_links (license_id, region_id) values (93, 7);
+insert into license_links (license_id, region_id) values (94, 7);
+insert into license_links (license_id, region_id) values (95, 7);
+insert into license_links (license_id, region_id) values (96, 7);
+insert into license_links (license_id, region_id) values (97, 7);
+insert into license_links (license_id, region_id) values (98, 7);
+insert into license_links (license_id, region_id) values (99, 7);
+insert into license_links (license_id, region_id) values (100, 7);
+
+-- Accessories
+insert into license_links (license_id, region_id) values (68, 7);
+insert into license_links (license_id, region_id) values (69, 7);
+insert into license_links (license_id, region_id) values (70, 7);
+insert into license_links (license_id, region_id) values (71, 7);
+insert into license_links (license_id, region_id) values (72, 7);
+insert into license_links (license_id, region_id) values (73, 7);
+insert into license_links (license_id, region_id) values (74, 7);
+insert into license_links (license_id, region_id) values (75, 7);
+insert into license_links (license_id, region_id) values (76, 7);
+insert into license_links (license_id, region_id) values (77, 7);
+insert into license_links (license_id, region_id) values (78, 7);
+insert into license_links (license_id, region_id) values (79, 7);
+insert into license_links (license_id, region_id) values (80, 7);
+insert into license_links (license_id, region_id) values (81, 7);
+insert into license_links (license_id, region_id) values (82, 7);
+insert into license_links (license_id, region_id) values (83, 7);
+insert into license_links (license_id, region_id) values (84, 7);
+insert into license_links (license_id, region_id) values (85, 7);
+insert into license_links (license_id, region_id) values (86, 7);
+insert into license_links (license_id, region_id) values (87, 7);
+insert into license_links (license_id, region_id) values (88, 7);
+insert into license_links (license_id, region_id) values (89, 7);
+insert into license_links (license_id, region_id) values (90, 7);
+
+-- Unlocked by Quickening 2
+-- Ninja swords
+insert into license_links (license_id, region_id) values (184, 8);
+
+-- Unlocked by Adrammelech
+-- Technicks
+insert into license_links (license_id, region_id) values (60, 9);
+
+-- Unlocked by Mateus
+-- Technicks
+insert into license_links (license_id, region_id) values (56, 10);
+
+-- Unlocked by Cuchulainn
+-- White Magicks
+insert into license_links (license_id, region_id) values (26, 11);
+
+-- Unlocked by Ultima
+-- Phoenix Lore
+insert into license_links (license_id, region_id) values (161, 12);
+insert into license_links (license_id, region_id) values (162, 12);
+
+-- Unlocked by Exodus
+-- Technicks
+insert into license_links (license_id, region_id) values (59, 13);
+
+-- Unlocked by Quickening 1
+-- Ninja Swords
+insert into license_links (license_id, region_id) values (183, 14);
+
+-- Unlocked by Hashmal
+-- Technicks
+insert into license_links (license_id, region_id) values (63, 15);
+
+-- Unlocked by Zalera
+-- HP Plus
+insert into license_links (license_id, region_id) values (101, 16);
+
+-- Unlocked by Quickening 3
+-- Ninja Swords
+insert into license_links (license_id, region_id) values (185, 17);
+
+-- Unlocked by Shemhazai
+-- Guns
+insert into license_links (license_id, region_id) values (191, 18);
+insert into license_links (license_id, region_id) values (192, 18);
+
+-- Unlocked by Quickening 4
+-- Ninja Swords
+insert into license_links (license_id, region_id) values (186, 19);
