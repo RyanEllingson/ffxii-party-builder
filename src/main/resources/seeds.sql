@@ -8,51 +8,51 @@ insert into license_types (license_type) values ('Essentials'), ('Black Magick')
 
 -- Archer regions
 -- main region, unlocked by Famfrit, unlocked by Quickening 1, unlocked by Ultima or Zodiark, unlocked by Chaos, unlocked by Shemhazai
-insert into regions (job_id) values (1),(1),(1),(1),(1),(1);
+insert into regions (job_id, description) values (1, 'Main region'),(1, 'Unlocked by Famfrit'),(1, 'Unlocked by Quickening 1'),(1, 'Unlocked by Ultima or Zodiark'),(1, 'Unlocked by Chaos'),(1, 'Unlocked by Shemhazai');
 
 -- Shikari regions
 -- main region, unlocked by Quickening 2, unlocked by Mateus, unlocked by Cuchulainn, unlocked by Ultima, unlocked by Exodus, unlocked by Quickening 1, unlocked by Hashmal, unlocked by Zalera, unlocked by Quickening 3, unlocked by Shemhazai, unlocked by Quickening 4
-insert into regions (job_id) values (2),(2),(2),(2),(2),(2),(2),(2),(2),(2),(2),(2);
+insert into regions (job_id, description) values (2, 'Main region'),(2, 'Unlocked by Quickening 2'),(2, 'Unlocked by Mateus'),(2, 'Unlocked by Cuchulainn'),(2, 'Unlocked by Ultima'),(2, 'Unlocked by Exodus'),(2, 'Unlocked by Quickening 1'),(2, 'Unlocked by Hashmal'),(2, 'Unlocked by Zalera'),(2, 'Unlocked by Quickening 3'),(2, 'Unlocked by Shemhazai'),(2, 'Unlocked by Quickening 4');
 
 -- Machinist regions
 -- main region, unlocked by Exodus, unlocked by Chaos, unlocked by Famfrit, unlocked by Zeromus, unlocked by Shemhazai, unlocked by Cuchulainn, unlocked by Zodiark, unlocked by Ultima or Quickening 4
-insert into regions (job_id) values (3),(3),(3),(3),(3),(3),(3),(3),(3);
+insert into regions (job_id, description) values (3, 'Main region'),(3, 'Unlocked by Exodus'),(3, 'Unlocked by Chaos'),(3, 'Unlocked by Famfrit'),(3, 'Unlocked by Zeromus'),(3, 'Unlocked by Shemhazai'),(3, 'Unlocked by Cuchulainn'),(3, 'Unlocked by Zodiark'),(3, 'Unlocked by Ultima or Quickening 4');
 
 -- Monk regions
 -- main region, unlocked by Zalera, unlocked by Quickening 2, unlocked by Hashmal, unlocked by Shemhazai, unlocked by Exodus, unlocked by Famfrit, unlocked by Zodiark, unlocked by Ultima, unlocked by Chaos, unlocked by Zeromus, unlocked by Quickening 4
-insert into regions (job_id) values (4),(4),(4),(4),(4),(4),(4),(4),(4),(4),(4),(4);
+insert into regions (job_id, description) values (4, 'Main region'),(4, 'Unlocked by Zalera'),(4, 'Unlocked by Quickening 2'),(4, 'Unlocked by Hashmal'),(4, 'Unlocked by Shemhazai'),(4, 'Unlocked by Exodus'),(4, 'Unlocked by Famfrit'),(4, 'Unlocked by Zodiark'),(4, 'Unlocked by Ultima'),(4, 'Unlocked by Chaos'),(4, 'Unlocked by Zeromus'),(4, 'Unlocked by Quickening 4');
 
 -- Bushi regions
 -- main region, unlocked by Belias, unlocked by Adrammelech, unlocked by Zalera, unlocked by Quickening 3, unlocked by Quickening 2, unlocked by Chaos, unlocked by Zodiark, unlocked by Quickening 4, unlocked by Ultima or Cuchulainn, unlocked by Zeromus, unlocked by Exodus, unlocked by Shemhazai
-insert into regions (job_id) values (5),(5),(5),(5),(5),(5),(5),(5),(5),(5),(5),(5),(5);
+insert into regions (job_id, description) values (5, 'Main region'),(5, 'Unlocked by Belias'),(5, 'Unlocked by Adrammelech'),(5, 'Unlocked by Zalera'),(5, 'Unlocked by Quickening 3'),(5, 'Unlocked by Quickening 2'),(5, 'Unlocked by Chaos'),(5, 'Unlocked by Zodiark'),(5, 'Unlocked by Quickening 4'),(5, 'Unlocked by Ultima or Cuchulainn'),(5, 'Unlocked by Zeromus'),(5, 'Unlocked by Exodus'),(5, 'Unlocked by Shemhazai');
 
 -- Red Battlemage regions
 -- main region, unlocked by Zeromus, unlocked by Hashmal, unlocked by Quickening 1, unlocked by Shemhazai, unlocked by Quickening 2, unlocked by Exodus, unlocked by Cuchulainn, unlocked by Famfrit, unlocked by Ultima, unlocked by Chaos, unlocked by Zodiark, unlocked by Quickening 4
-insert into regions (job_id) values (6),(6),(6),(6),(6),(6),(6),(6),(6),(6),(6),(6),(6);
+insert into regions (job_id, description) values (6, 'Main region'),(6, 'Unlocked by Zeromus'),(6, 'Unlocked by Hashmal'),(6, 'Unlocked by Quickening 1'),(6, 'Unlocked by Shemhazai'),(6, 'Unlocked by Quickening 2'),(6, 'Unlocked by Exodus'),(6, 'Unlocked by Cuchulainn'),(6, 'Unlocked by Famfrit'),(6, 'Unlocked by Ultima'),(6, 'Unlocked by Chaos'),(6, 'Unlocked by Zodiark'),(6, 'Unlocked by Quickening 4');
 
 -- White Mage regions
 -- main region, unlocked by Famfrit, unlocked by Zodiark, unlocked by Zeromus, unlocked by Cuchulainn, unlocked by Quickening 2, unlocked by Shemhazai, unlocked by Chaos, unlocked by Exodus, unlocked by Quickening 3, unlocked by Adrammelech, unlocked by Quickening 1
-insert into regions (job_id) values (7),(7),(7),(7),(7),(7),(7),(7),(7),(7),(7),(7);
+insert into regions (job_id, description) values (7, 'Main region'),(7, 'Unlocked by Famfrit'),(7, 'Unlocked by Zodiark'),(7, 'Unlocked by Zeromus'),(7, 'Unlocked by Cuchulainn'),(7, 'Unlocked by Quickening 2'),(7, 'Unlocked by Shemhazai'),(7, 'Unlocked by Chaos'),(7, 'Unlocked by Exodus'),(7, 'Unlocked by Quickening 3'),(7, 'Unlocked by Adrammelech'),(7, 'Unlocked by Quickening 1');
 
 -- Black Mage regions
 -- main region, unlocked by Quickening 4, unlocked by Mateus, unlocked by Quickening 1, unlocked by Adrammelech, unlocked by Zalera, unlocked by Hashmal, unlocked by Shemhazai, unlocked by Exodus, unlocked by Zeromus, unlocked by Famfrit, unlocked by Ultima
-insert into regions (job_id) values (8),(8),(8),(8),(8),(8),(8),(8),(8),(8),(8),(8);
+insert into regions (job_id, description) values (8, 'Main region'),(8, 'Unlocked by Quickening 4'),(8, 'Unlocked by Mateus'),(8, 'Unlocked by Quickening 1'),(8, 'Unlocked by Adrammelech'),(8, 'Unlocked by Zalera'),(8, 'Unlocked by Hashmal'),(8, 'Unlocked by Shemhazai'),(8, 'Unlocked by Exodus'),(8, 'Unlocked by Zeromus'),(8, 'Unlocked by Famfrit'),(8, 'Unlocked by Ultima');
 
 -- Time Battlemage regions
 -- main region, unlocked by Famfrit, unlocked by Zeromus, unlocked by Exodus, unlocked by Hashmal, unlocked by Quickening 2, unlocked by Zalera, unlocked by Adrammelech, unlocked by Mateus, unlocked by Chaos, unlocked by Ultima, unlocked by Zodiark
-insert into regions (job_id) values (9),(9),(9),(9),(9),(9),(9),(9),(9),(9),(9),(9);
+insert into regions (job_id, description) values (9, 'Main region'),(9, 'Unlocked by Famfrit'),(9, 'Unlocked by Zeromus'),(9, 'Unlocked by Exodus'),(9, 'Unlocked by Hashmal'),(9, 'Unlocked by Quickening 2'),(9, 'Unlocked by Zalera'),(9, 'Unlocked by Adrammelech'),(9, 'Unlocked by Mateus'),(9, 'Unlocked by Chaos'),(9, 'Unlocked by Ultima'),(9, 'Unlocked by Zodiark');
 
 -- Uhlan regions
 -- main region, unlocked by Adrammelech, unlocked by Quickening 3, unlocked by Ultima, unlocked by Chaos, unlocked by Hashmal, unlocked by Famfrit, unlocked by Cuchulainn, unlocked by Mateus
-insert into regions (job_id) values (10),(10),(10),(10),(10),(10),(10),(10),(10);
+insert into regions (job_id, description) values (10, 'Main region'),(10, 'Unlocked by Adrammelech'),(10, 'Unlocked by Quickening 3'),(10, 'Unlocked by Ultima'),(10, 'Unlocked by Chaos'),(10, 'Unlocked by Hashmal'),(10, 'Unlocked by Famfrit'),(10, 'Unlocked by Cuchulainn'),(10, 'Unlocked by Mateus');
 
 -- Knight regions
 -- main region, unlocked by Mateus, unlocked by Belias, unlocked by Shemhazai, unlocked by Cuchulainn, unlocked by Exodus, unlocked by Ultima, unlocked by Chaos or Zodiark or Quickening 4, unlocked by Hashmal
-insert into regions (job_id) values (11),(11),(11),(11),(11),(11),(11),(11),(11);
+insert into regions (job_id, description) values (11, 'Main region'),(11, 'Unlocked by Mateus'),(11, 'Unlocked by Belias'),(11, 'Unlocked by Shemhazai'),(11, 'Unlocked by Cuchulainn'),(11, 'Unlocked by Exodus'),(11, 'Unlocked by Ultima'),(11, 'Unlocked by Chaos or Zodiark or Quickening 4'),(11, 'Unlocked by Hashmal');
 
 -- Foebreaker regions
 -- main region, unlocked by Quickening 3, unlocked by Cuchulainn, unlocked by Hashmal, unlocked by Belias, unlocked by Ultima, unlocked by Famfrit, unlocked by Zalera, unlocked by Adrammelech, unlocked by Quickening 4, unlocked by Exodus or Zeromus
-insert into regions (job_id) values (12),(12),(12),(12),(12),(12),(12),(12),(12),(12),(12);
+insert into regions (job_id, description) values (12, 'Main region'),(12, 'Unlocked by Quickening 3'),(12, 'Unlocked by Cuchulainn'),(12, 'Unlocked by Hashmal'),(12, 'Unlocked by Belias'),(12, 'Unlocked by Ultima'),(12, 'Unlocked by Famfrit'),(12, 'Unlocked by Zalera'),(12, 'Unlocked by Adrammelech'),(12, 'Unlocked by Quickening 4'),(12, 'Unlocked by Exodus or Zeromus');
 
 -- Essentials licenses
 insert into licenses (license_name, description, lp_cost, license_type_id) values ('Essentials', 'Attack & Items', 0, 1);

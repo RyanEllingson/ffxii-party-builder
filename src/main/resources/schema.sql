@@ -21,6 +21,7 @@ create table espers(
 create table regions(
     region_id int unique not null generated always as identity,
     job_id int not null,
+    description varchar(255),
     primary key (region_id),
     foreign key (job_id) references jobs(job_id)
 );

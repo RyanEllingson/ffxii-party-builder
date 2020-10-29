@@ -4,15 +4,17 @@ public class Region {
 
 	private int regionId;
 	private Job job;
+	private String description;
 	
 	public Region() {
 		super();
 	}
 
-	public Region(int regionId, Job job) {
+	public Region(int regionId, Job job, String description) {
 		super();
 		this.regionId = regionId;
 		this.job = job;
+		this.description = description;
 	}
 
 	public int getRegionId() {
@@ -31,9 +33,19 @@ public class Region {
 		this.job = job;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Override
 	public String toString() {
-		return "Region [regionId=" + regionId + ", job=" + job + "]";
+		return "Region [regionId=" + regionId + ", job=" + job + ", description=" + description + "]";
 	}
+
+	
 	
 }
