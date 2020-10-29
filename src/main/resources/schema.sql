@@ -37,6 +37,7 @@ create table licenses(
     description varchar(255) not null,
     lp_cost int not null,
     license_type_id int not null,
+    subtype varchar(255),
     primary key (license_id),
     foreign key (license_type_id) references license_types(license_type_id)
 );

@@ -7,18 +7,21 @@ public class License {
 	private String description;
 	private int lpCost;
 	private LicenseType licenseType;
+	private String subtype;
 	
 	public License() {
 		super();
 	}
 
-	public License(int licenseId, String licenseName, String description, int lpCost, LicenseType licenseType) {
+	public License(int licenseId, String licenseName, String description, int lpCost, LicenseType licenseType,
+			String subtype) {
 		super();
 		this.licenseId = licenseId;
 		this.licenseName = licenseName;
 		this.description = description;
 		this.lpCost = lpCost;
 		this.licenseType = licenseType;
+		this.subtype = subtype;
 	}
 
 	public int getLicenseId() {
@@ -61,10 +64,18 @@ public class License {
 		this.licenseType = licenseType;
 	}
 
+	public String getSubtype() {
+		return subtype;
+	}
+
+	public void setSubtype(String subtype) {
+		this.subtype = subtype;
+	}
+
 	@Override
 	public String toString() {
 		return "License [licenseId=" + licenseId + ", licenseName=" + licenseName + ", description=" + description
-				+ ", lpCost=" + lpCost + ", licenseType=" + licenseType + "]";
+				+ ", lpCost=" + lpCost + ", licenseType=" + licenseType + ", subtype=" + subtype + "]";
 	}
 	
 }
