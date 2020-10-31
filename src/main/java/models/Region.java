@@ -1,20 +1,24 @@
 package models;
 
+import java.util.List;
+
 public class Region {
 
 	private int regionId;
-	private Job job;
+	private int jobId;
 	private String description;
+	private List<License> licenses;
 	
 	public Region() {
 		super();
 	}
 
-	public Region(int regionId, Job job, String description) {
+	public Region(int regionId, int jobId, String description, List<License> licenses) {
 		super();
 		this.regionId = regionId;
-		this.job = job;
+		this.jobId = jobId;
 		this.description = description;
+		this.licenses = licenses;
 	}
 
 	public int getRegionId() {
@@ -25,12 +29,12 @@ public class Region {
 		this.regionId = regionId;
 	}
 
-	public Job getJob() {
-		return job;
+	public int getJobId() {
+		return jobId;
 	}
 
-	public void setJob(Job job) {
-		this.job = job;
+	public void setJobId(int jobId) {
+		this.jobId = jobId;
 	}
 
 	public String getDescription() {
@@ -41,11 +45,19 @@ public class Region {
 		this.description = description;
 	}
 
-	@Override
-	public String toString() {
-		return "Region [regionId=" + regionId + ", job=" + job + ", description=" + description + "]";
+	public List<License> getLicenses() {
+		return licenses;
 	}
 
-	
+	public void setLicenses(List<License> licenses) {
+		this.licenses = licenses;
+	}
+
+	@Override
+	public String toString() {
+		return "Region [regionId=" + regionId + ", jobId=" + jobId + ", description=" + description + ", licenses="
+				+ licenses + "]";
+	}
+
 	
 }

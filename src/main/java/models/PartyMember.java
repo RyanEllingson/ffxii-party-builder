@@ -4,10 +4,12 @@ import java.util.List;
 
 public class PartyMember {
 
+	private int memberId;
 	private String memberName;
 	private Job job1;
 	private Job job2;
-	private List<License> allLicenses;
+	private List<Region> allRegions;
+	private List<Region> availableRegions;
 	private List<License> availableLicenses;
 	private List<Quickening> quickenings;
 	private List<Esper> espers;
@@ -16,16 +18,27 @@ public class PartyMember {
 		super();
 	}
 
-	public PartyMember(String memberName, Job job1, Job job2, List<License> allLicenses,
-			List<License> availableLicenses, List<Quickening> quickenings, List<Esper> espers) {
+	public PartyMember(int memberId, String memberName, Job job1, Job job2, List<Region> allRegions,
+			List<Region> availableRegions, List<License> availableLicenses, List<Quickening> quickenings,
+			List<Esper> espers) {
 		super();
+		this.memberId = memberId;
 		this.memberName = memberName;
 		this.job1 = job1;
 		this.job2 = job2;
-		this.allLicenses = allLicenses;
+		this.allRegions = allRegions;
+		this.availableRegions = availableRegions;
 		this.availableLicenses = availableLicenses;
 		this.quickenings = quickenings;
 		this.espers = espers;
+	}
+
+	public int getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
 	}
 
 	public String getMemberName() {
@@ -52,12 +65,20 @@ public class PartyMember {
 		this.job2 = job2;
 	}
 
-	public List<License> getAllLicenses() {
-		return allLicenses;
+	public List<Region> getAllRegions() {
+		return allRegions;
 	}
 
-	public void setAllLicenses(List<License> allLicenses) {
-		this.allLicenses = allLicenses;
+	public void setAllRegions(List<Region> allRegions) {
+		this.allRegions = allRegions;
+	}
+
+	public List<Region> getAvailableRegions() {
+		return availableRegions;
+	}
+
+	public void setAvailableRegions(List<Region> availableRegions) {
+		this.availableRegions = availableRegions;
 	}
 
 	public List<License> getAvailableLicenses() {
@@ -86,9 +107,10 @@ public class PartyMember {
 
 	@Override
 	public String toString() {
-		return "PartyMember [memberName=" + memberName + ", job1=" + job1 + ", job2=" + job2 + ", allLicenses="
-				+ allLicenses + ", availableLicenses=" + availableLicenses + ", quickenings=" + quickenings
-				+ ", espers=" + espers + "]";
+		return "PartyMember [memberId=" + memberId + ", memberName=" + memberName + ", job1=" + job1 + ", job2=" + job2
+				+ ", allRegions=" + allRegions + ", availableRegions=" + availableRegions + ", availableLicenses="
+				+ availableLicenses + ", quickenings=" + quickenings + ", espers=" + espers + "]";
 	}
 
+	
 }
