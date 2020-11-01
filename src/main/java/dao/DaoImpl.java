@@ -105,7 +105,7 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<License> getLicensesByRegion(int regionId) {
 		List<License> licenses = new ArrayList<>();
-		String sql = "select licenses.license_id, licenses.license_name, licenses.description, licenses.lp_cost, license_types.license_type_id, license_types.license_type, licenses.subtype from license_links inner join licenses on license_links.license_id = licenses.lincense_id inner join license_types on licenses.license_type_id = license_types.license_type_id where license_links.region_id = ?";
+		String sql = "select licenses.license_id, licenses.license_name, licenses.description, licenses.lp_cost, license_types.license_type_id, license_types.license_type, licenses.subtype from license_links inner join licenses on license_links.license_id = licenses.license_id inner join license_types on licenses.license_type_id = license_types.license_type_id where license_links.region_id = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, regionId);
