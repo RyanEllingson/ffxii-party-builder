@@ -1,6 +1,7 @@
 package models;
 
 import java.util.List;
+import java.util.Map;
 
 public class PartyMember {
 
@@ -10,7 +11,7 @@ public class PartyMember {
 	private Job job2;
 	private List<Region> allRegions;
 	private List<Region> availableRegions;
-	private List<License> availableLicenses;
+	private Map<String, Map<String, List<License>>> licenseList;
 	private List<Quickening> quickenings;
 	private List<Esper> espers;
 	
@@ -19,8 +20,8 @@ public class PartyMember {
 	}
 
 	public PartyMember(int memberId, String memberName, Job job1, Job job2, List<Region> allRegions,
-			List<Region> availableRegions, List<License> availableLicenses, List<Quickening> quickenings,
-			List<Esper> espers) {
+			List<Region> availableRegions, Map<String, Map<String, List<License>>> licenseList,
+			List<Quickening> quickenings, List<Esper> espers) {
 		super();
 		this.memberId = memberId;
 		this.memberName = memberName;
@@ -28,7 +29,7 @@ public class PartyMember {
 		this.job2 = job2;
 		this.allRegions = allRegions;
 		this.availableRegions = availableRegions;
-		this.availableLicenses = availableLicenses;
+		this.licenseList = licenseList;
 		this.quickenings = quickenings;
 		this.espers = espers;
 	}
@@ -81,12 +82,12 @@ public class PartyMember {
 		this.availableRegions = availableRegions;
 	}
 
-	public List<License> getAvailableLicenses() {
-		return availableLicenses;
+	public Map<String, Map<String, List<License>>> getLicenseList() {
+		return licenseList;
 	}
 
-	public void setAvailableLicenses(List<License> availableLicenses) {
-		this.availableLicenses = availableLicenses;
+	public void setLicenseList(Map<String, Map<String, List<License>>> licenseList) {
+		this.licenseList = licenseList;
 	}
 
 	public List<Quickening> getQuickenings() {
@@ -108,8 +109,8 @@ public class PartyMember {
 	@Override
 	public String toString() {
 		return "PartyMember [memberId=" + memberId + ", memberName=" + memberName + ", job1=" + job1 + ", job2=" + job2
-				+ ", allRegions=" + allRegions + ", availableRegions=" + availableRegions + ", availableLicenses="
-				+ availableLicenses + ", quickenings=" + quickenings + ", espers=" + espers + "]";
+				+ ", allRegions=" + allRegions + ", availableRegions=" + availableRegions + ", licenseList="
+				+ licenseList + ", quickenings=" + quickenings + ", espers=" + espers + "]";
 	}
 
 	
