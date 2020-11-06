@@ -22,47 +22,6 @@ public class DaoImpl implements Dao {
 		this.conn = conn;
 	}
 
-//	@Override
-//	public List<Esper> getAllEspers() {
-//		List<Esper> espers = new ArrayList<>();
-//		String sql = "select esper_id, esper_name, lp_cost from espers";
-//		try {
-//			PreparedStatement ps = conn.prepareStatement(sql);
-//			ResultSet rs = ps.executeQuery();
-//			while (rs.next()) {
-//				espers.add(new Esper(
-//						rs.getInt(1),
-//						rs.getString(2),
-//						false,
-//						rs.getInt(3)
-//						));
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return espers;
-//	}
-
-//	@Override
-//	public Esper getEsperById(int esperId) {
-//		Esper esper = new Esper();
-//		String sql = "select esper_id, esper_name, lp_cost from espers where esper_id = ?";
-//		try {
-//			PreparedStatement ps = conn.prepareStatement(sql);
-//			ps.setInt(1, esperId);
-//			ResultSet rs = ps.executeQuery();
-//			if (rs.next()) {
-//				esper.setEsperId(rs.getInt(1));
-//				esper.setEsperName(rs.getString(2));
-//				esper.setUsed(false);
-//				esper.setLpCost(rs.getInt(3));
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return esper;
-//	}
-
 	@Override
 	public List<Job> getAllJobs() {
 		List<Job> jobs = new ArrayList<>();
@@ -148,45 +107,6 @@ public class DaoImpl implements Dao {
 		return license;
 	}
 
-//	@Override
-//	public List<Quickening> getAllQuickenings() {
-//		List<Quickening> quickenings = new ArrayList<>();
-//		String sql = "select quickening_id, quickening_name, lp_cost from quickenings";
-//		try {
-//			PreparedStatement ps = conn.prepareStatement(sql);
-//			ResultSet rs = ps.executeQuery();
-//			while (rs.next()) {
-//				quickenings.add(new Quickening(
-//						rs.getInt(1),
-//						rs.getString(2),
-//						rs.getInt(3)
-//						));
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return quickenings;
-//	}
-
-//	@Override
-//	public Quickening getQuickeningById(int quickeningId) {
-//		Quickening quickening = new Quickening();
-//		String sql = "select quickening_id, quickening_name, lp_cost from quickenings where quickening_id = ?";
-//		try {
-//			PreparedStatement ps = conn.prepareStatement(sql);
-//			ps.setInt(1, quickeningId);
-//			ResultSet rs = ps.executeQuery();
-//			if (rs.next()) {
-//				quickening.setQuickeningId(rs.getInt(1));
-//				quickening.setQuickeningName(rs.getString(2));
-//				quickening.setLpCost(rs.getInt(3));
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return quickening;
-//	}
-
 	@Override
 	public List<Region> getRegionsByJob(int jobId) {
 		List<Region> regions = new ArrayList<>();
@@ -227,6 +147,28 @@ public class DaoImpl implements Dao {
 			e.printStackTrace();
 		}
 		return region;
+	}
+	
+	@Override
+	public List<Region> getRegionsByUnlocker(int unlockerId) {
+		List<Region> regions = new ArrayList<>();
+		String sql = "select regions.region_id, regions.job_id, regions.description from regions inner join unlocker_links on regions.region_id = unlocker_links.region_id where unlocker_links.unlocker_id = ?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, unlockerId);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				regions.add(new Region(
+						rs.getInt(1),
+						rs.getInt(2),
+						rs.getString(3),
+						getLicensesByRegion(rs.getInt(1))
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return regions;
 	}
 	
 	@Override

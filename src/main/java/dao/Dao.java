@@ -4,7 +4,6 @@ import java.util.List;
 
 import models.Job;
 import models.License;
-import models.LicenseType;
 import models.Region;
 import models.Unlocker;
 
@@ -21,6 +20,8 @@ public interface Dao {
 	public List<Region> getRegionsByJob(int jobId);
 	
 	public Region getRegionById(int regionId);
+	
+	public List<Region> getRegionsByUnlocker(int unlockerId);
 	
 	public List<Unlocker> getAllUnlockers();
 	

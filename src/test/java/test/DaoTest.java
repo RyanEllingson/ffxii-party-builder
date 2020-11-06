@@ -12,10 +12,8 @@ import org.junit.Test;
 
 import dao.Dao;
 import dao.DaoImpl;
-import models.Esper;
 import models.Job;
 import models.License;
-import models.Quickening;
 import models.Region;
 import models.Unlocker;
 import util.ConnectionFactory;
@@ -84,6 +82,12 @@ public class DaoTest {
 	public void testGetRegionById() {
 		Region result = dao.getRegionById(2);
 		assertEquals("Unlocked by Famfrit", result.getDescription());
+	}
+	
+	@Test
+	public void testGetRegionsByUnlocker() {
+		List<Region> result = dao.getRegionsByUnlocker(6);
+		assertEquals(3, result.size());
 	}
 	
 	@AfterClass

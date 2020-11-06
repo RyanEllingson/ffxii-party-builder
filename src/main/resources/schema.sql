@@ -47,7 +47,7 @@ create table unlocker_links(
     region_id int not null,
     primary key (unlocker_link_id),
     foreign key (unlocker_id) references unlockers(unlocker_id),
-    foreign key (region_id) references region(region_id)
+    foreign key (region_id) references regions(region_id)
 );
 
 create table license_types(

@@ -26,13 +26,25 @@ public class Regions {
 		}
 	}
 	
-	public static void getRegionByJob(HttpServletRequest req, HttpServletResponse res) {
+	public static void getRegionsByJob(HttpServletRequest req, HttpServletResponse res) {
 		try {
 			Connection conn = ConnectionFactory.getConnection();
 			Dao dao = new DaoImpl(conn);
 			ObjectMapper om = new ObjectMapper();
 			String[] params = req.getRequestURI().split("/");
 			res.getWriter().write(om.writeValueAsString(dao.getRegionsByJob(Integer.parseInt(params[4]))));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void getRegionsByUnlocker(HttpServletRequest req, HttpServletResponse res) {
+		try {
+			Connection conn = ConnectionFactory.getConnection();
+			Dao dao = new DaoImpl(conn);
+			ObjectMapper om = new ObjectMapper();
+			String[] params = req.getRequestURI().split("/");
+			res.getWriter().write(om.writeValueAsString(dao.getRegionsByUnlocker(Integer.parseInt(params[4]))));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

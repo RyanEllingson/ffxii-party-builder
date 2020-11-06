@@ -27,7 +27,9 @@ public class GetRequestHelper {
 		} else if (uri.matches("/api/quickenings")) {
 			Quickenings.getAllQuickenings(req, res);
 		} else if (uri.matches("/api/regions/job/(.*)")) {
-			Regions.getRegionByJob(req, res);
+			Regions.getRegionsByJob(req, res);
+		} else if (uri.matches("/api/regions/unlocker/(.*)")) {
+			Regions.getRegionsByUnlocker(req, res);
 		} else if (uri.matches("/api/regions/(.*)")) {
 			Regions.getRegionById(req, res);
 		} else if (uri.matches("/api/unlockers/(.*)")) {

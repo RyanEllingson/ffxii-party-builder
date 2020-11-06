@@ -2143,7 +2143,7 @@ insert into license_links (license_id, region_id) values (48, 118);
 insert into license_links (license_id, region_id) values (100, 119);
 
 -- Technicks
-insert into license_links (license_id, region_id) values (48, 119);
+insert into license_links (license_id, region_id) values (58, 119);
 
 -- Greatswords
 insert into license_links (license_id, region_id) values (257, 119);
