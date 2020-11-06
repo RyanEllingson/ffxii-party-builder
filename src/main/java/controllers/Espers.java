@@ -25,15 +25,4 @@ public class Espers {
 		}
 	}
 	
-	public static void getEsperById(HttpServletRequest req, HttpServletResponse res) {
-		try {
-			Connection conn = ConnectionFactory.getConnection();
-			Dao dao = new DaoImpl(conn);
-			ObjectMapper om = new ObjectMapper();
-			String[] params = req.getRequestURI().split("/");
-			res.getWriter().write(om.writeValueAsString(dao.getEsperById(Integer.parseInt(params[3]))));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 }

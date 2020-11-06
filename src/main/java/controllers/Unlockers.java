@@ -12,17 +12,17 @@ import dao.Dao;
 import dao.DaoImpl;
 import util.ConnectionFactory;
 
-public class Quickenings {
+public class Unlockers {
 
-	public static void getAllQuickenings(HttpServletRequest req, HttpServletResponse res) {
+	public static void getUnlockerById(HttpServletRequest req, HttpServletResponse res) {
 		try {
 			Connection conn = ConnectionFactory.getConnection();
 			Dao dao = new DaoImpl(conn);
 			ObjectMapper om = new ObjectMapper();
-			res.getWriter().write(om.writeValueAsString(dao.getAllQuickenings()));
+			String[] params = req.getRequestURI().split("/");
+			res.getWriter().write(om.writeValueAsString(dao.getUnlockerById(Integer.parseInt(params[3]))));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
 }

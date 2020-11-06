@@ -8,6 +8,7 @@ import controllers.Jobs;
 import controllers.Licenses;
 import controllers.Quickenings;
 import controllers.Regions;
+import controllers.Unlockers;
 
 public class GetRequestHelper {
 
@@ -15,8 +16,6 @@ public class GetRequestHelper {
 		String uri = req.getRequestURI();
 		if (uri.matches("/api/espers")) {
 			Espers.getAllEspers(req, res);
-		} else if (uri.matches("/api/espers/(.*)")) {
-			Espers.getEsperById(req, res);
 		} else if (uri.matches("/api/jobs")) {
 			Jobs.getAllJobs(req, res);
 		} else if (uri.matches("/api/jobs/(.*)")) {
@@ -27,12 +26,12 @@ public class GetRequestHelper {
 			Licenses.getLicenseById(req, res);
 		} else if (uri.matches("/api/quickenings")) {
 			Quickenings.getAllQuickenings(req, res);
-		} else if (uri.matches("/api/quickenings/(.*)")) {
-			Quickenings.getQuickeningById(req, res);
 		} else if (uri.matches("/api/regions/job/(.*)")) {
 			Regions.getRegionByJob(req, res);
 		} else if (uri.matches("/api/regions/(.*)")) {
 			Regions.getRegionById(req, res);
+		} else if (uri.matches("/api/unlockers/(.*)")) {
+			Unlockers.getUnlockerById(req, res);
 		}
 	}
 }

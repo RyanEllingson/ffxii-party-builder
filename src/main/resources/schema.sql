@@ -4,19 +4,34 @@ create table jobs(
     primary key (job_id)
 );
 
-create table quickenings(
-    quickening_id int unique not null generated always as identity,
-    quickening_name varchar(20) unique not null,
-    lp_cost int not null,
-    primary key (quickening_id)
+create table unlocker_types(
+    unlocker_type_id int not null generated always as identity,
+    unlocker_type varchar(15) not null,
+    primary key (unlocker_type_id)
 );
 
-create table espers(
-    esper_id int unique not null generated always as identity,
-    esper_name varchar(30) unique not null,
-    lp_cost int not null,
-    primary key (esper_id)
+create table unlockers(
+    unlocker_id int unique not null generated always as identity,
+    unlocker_type_id int not null,
+    unlocker_name varchar(30) unique not null,
+    unlocker_lp_cost int not null,
+    primary key (unlocker_id),
+    foreign key (unlocker_type_id) references unlocker_types(unlocker_type_id)
 );
+
+-- create table quickenings(
+--     quickening_id int unique not null generated always as identity,
+--     quickening_name varchar(20) unique not null,
+--     lp_cost int not null,
+--     primary key (quickening_id)
+-- );
+
+-- create table espers(
+--     esper_id int unique not null generated always as identity,
+--     esper_name varchar(30) unique not null,
+--     lp_cost int not null,
+--     primary key (esper_id)
+-- );
 
 create table regions(
     region_id int unique not null generated always as identity,
@@ -24,6 +39,15 @@ create table regions(
     description varchar(255),
     primary key (region_id),
     foreign key (job_id) references jobs(job_id)
+);
+
+create table unlocker_links(
+    unlocker_link_id int unique not null generated always as identity,
+    unlocker_id int not null,
+    region_id int not null,
+    primary key (unlocker_link_id),
+    foreign key (unlocker_id) references unlockers(unlocker_id),
+    foreign key (region_id) references region(region_id)
 );
 
 create table license_types(

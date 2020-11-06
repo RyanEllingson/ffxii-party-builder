@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.Esper;
 import models.Job;
 import models.License;
 import models.LicenseType;
-import models.Quickening;
 import models.Region;
+import models.Unlocker;
+import models.UnlockerType;
 
 public class DaoImpl implements Dao {
 	
@@ -22,46 +22,46 @@ public class DaoImpl implements Dao {
 		this.conn = conn;
 	}
 
-	@Override
-	public List<Esper> getAllEspers() {
-		List<Esper> espers = new ArrayList<>();
-		String sql = "select esper_id, esper_name, lp_cost from espers";
-		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				espers.add(new Esper(
-						rs.getInt(1),
-						rs.getString(2),
-						false,
-						rs.getInt(3)
-						));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return espers;
-	}
+//	@Override
+//	public List<Esper> getAllEspers() {
+//		List<Esper> espers = new ArrayList<>();
+//		String sql = "select esper_id, esper_name, lp_cost from espers";
+//		try {
+//			PreparedStatement ps = conn.prepareStatement(sql);
+//			ResultSet rs = ps.executeQuery();
+//			while (rs.next()) {
+//				espers.add(new Esper(
+//						rs.getInt(1),
+//						rs.getString(2),
+//						false,
+//						rs.getInt(3)
+//						));
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		return espers;
+//	}
 
-	@Override
-	public Esper getEsperById(int esperId) {
-		Esper esper = new Esper();
-		String sql = "select esper_id, esper_name, lp_cost from espers where esper_id = ?";
-		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, esperId);
-			ResultSet rs = ps.executeQuery();
-			if (rs.next()) {
-				esper.setEsperId(rs.getInt(1));
-				esper.setEsperName(rs.getString(2));
-				esper.setUsed(false);
-				esper.setLpCost(rs.getInt(3));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return esper;
-	}
+//	@Override
+//	public Esper getEsperById(int esperId) {
+//		Esper esper = new Esper();
+//		String sql = "select esper_id, esper_name, lp_cost from espers where esper_id = ?";
+//		try {
+//			PreparedStatement ps = conn.prepareStatement(sql);
+//			ps.setInt(1, esperId);
+//			ResultSet rs = ps.executeQuery();
+//			if (rs.next()) {
+//				esper.setEsperId(rs.getInt(1));
+//				esper.setEsperName(rs.getString(2));
+//				esper.setUsed(false);
+//				esper.setLpCost(rs.getInt(3));
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		return esper;
+//	}
 
 	@Override
 	public List<Job> getAllJobs() {
@@ -148,44 +148,44 @@ public class DaoImpl implements Dao {
 		return license;
 	}
 
-	@Override
-	public List<Quickening> getAllQuickenings() {
-		List<Quickening> quickenings = new ArrayList<>();
-		String sql = "select quickening_id, quickening_name, lp_cost from quickenings";
-		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				quickenings.add(new Quickening(
-						rs.getInt(1),
-						rs.getString(2),
-						rs.getInt(3)
-						));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return quickenings;
-	}
+//	@Override
+//	public List<Quickening> getAllQuickenings() {
+//		List<Quickening> quickenings = new ArrayList<>();
+//		String sql = "select quickening_id, quickening_name, lp_cost from quickenings";
+//		try {
+//			PreparedStatement ps = conn.prepareStatement(sql);
+//			ResultSet rs = ps.executeQuery();
+//			while (rs.next()) {
+//				quickenings.add(new Quickening(
+//						rs.getInt(1),
+//						rs.getString(2),
+//						rs.getInt(3)
+//						));
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		return quickenings;
+//	}
 
-	@Override
-	public Quickening getQuickeningById(int quickeningId) {
-		Quickening quickening = new Quickening();
-		String sql = "select quickening_id, quickening_name, lp_cost from quickenings where quickening_id = ?";
-		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, quickeningId);
-			ResultSet rs = ps.executeQuery();
-			if (rs.next()) {
-				quickening.setQuickeningId(rs.getInt(1));
-				quickening.setQuickeningName(rs.getString(2));
-				quickening.setLpCost(rs.getInt(3));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return quickening;
-	}
+//	@Override
+//	public Quickening getQuickeningById(int quickeningId) {
+//		Quickening quickening = new Quickening();
+//		String sql = "select quickening_id, quickening_name, lp_cost from quickenings where quickening_id = ?";
+//		try {
+//			PreparedStatement ps = conn.prepareStatement(sql);
+//			ps.setInt(1, quickeningId);
+//			ResultSet rs = ps.executeQuery();
+//			if (rs.next()) {
+//				quickening.setQuickeningId(rs.getInt(1));
+//				quickening.setQuickeningName(rs.getString(2));
+//				quickening.setLpCost(rs.getInt(3));
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		return quickening;
+//	}
 
 	@Override
 	public List<Region> getRegionsByJob(int jobId) {
@@ -228,5 +228,89 @@ public class DaoImpl implements Dao {
 		}
 		return region;
 	}
+	
+	@Override
+	public List<Unlocker> getAllUnlockers() {
+		List<Unlocker> unlockers = new ArrayList<>();
+		String sql = "select unlockers.unlocker_id, unlocker_types.unlocker_type_id, unlocker_types.unlocker_type, unlockers.unlocker_name, unlockers.unlocker_lp_cost from unlockers inner join unlocker_types on unlockers.unlocker_type_id = unlocker_types.unlocker_type_id";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				unlockers.add(new Unlocker(
+						rs.getInt(1),
+						new UnlockerType(rs.getInt(2), rs.getString(3)),
+						rs.getString(4),
+						rs.getInt(5)
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return unlockers;
+	}
 
+	@Override
+	public List<Unlocker> getAllEspers() {
+		List<Unlocker> espers = new ArrayList<>();
+		String sql = "select unlockers.unlocker_id, unlocker_types.unlocker_type_id, unlocker_types.unlocker_type, unlockers.unlocker_name, unlockers.unlocker_lp_cost from unlockers inner join unlocker_types on unlockers.unlocker_type_id = unlocker_types.unlocker_type_id where unlockers.unlocker_type_id = ?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, 3);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				espers.add(new Unlocker(
+						rs.getInt(1),
+						new UnlockerType(rs.getInt(2), rs.getString(3)),
+						rs.getString(4),
+						rs.getInt(5)
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return espers;
+	}
+	
+	@Override
+	public List<Unlocker> getAllQuickenings() {
+		List<Unlocker> quickenings = new ArrayList<>();
+		String sql = "select unlockers.unlocker_id, unlocker_types.unlocker_type_id, unlocker_types.unlocker_type, unlockers.unlocker_name, unlockers.unlocker_lp_cost from unlockers inner join unlocker_types on unlockers.unlocker_type_id = unlocker_types.unlocker_type_id where unlockers.unlocker_type_id = ?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, 2);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				quickenings.add(new Unlocker(
+						rs.getInt(1),
+						new UnlockerType(rs.getInt(2), rs.getString(3)),
+						rs.getString(4),
+						rs.getInt(5)
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return quickenings;
+	}
+	
+	@Override
+	public Unlocker getUnlockerById(int unlockerId) {
+		Unlocker unlocker = new Unlocker();
+		String sql = "select unlockers.unlocker_id, unlocker_types.unlocker_type_id, unlocker_types.unlocker_type, unlockers.unlocker_name, unlockers.unlocker_lp_cost from unlockers inner join unlocker_types on unlockers.unlocker_type_id = unlocker_types.unlocker_type_id where unlockers.unlocker_id = ?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, unlockerId);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				unlocker.setUnlockerId(rs.getInt(1));
+				unlocker.setUnlockerType(new UnlockerType(rs.getInt(2), rs.getString(3)));
+				unlocker.setUnlockerName(rs.getString(4));
+				unlocker.setUnlockerLpCost(rs.getInt(5));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return unlocker;
+	}
 }

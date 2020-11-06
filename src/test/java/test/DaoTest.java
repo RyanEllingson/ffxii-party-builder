@@ -17,6 +17,7 @@ import models.Job;
 import models.License;
 import models.Quickening;
 import models.Region;
+import models.Unlocker;
 import util.ConnectionFactory;
 
 public class DaoTest {
@@ -32,14 +33,15 @@ public class DaoTest {
 	
 	@Test
 	public void testGetAllEspers() {
-		List<Esper> result = dao.getAllEspers();
+		List<Unlocker> result = dao.getAllEspers();
 		assertEquals(13, result.size());
 	}
 	
 	@Test
-	public void testGetEsperById() {
-		Esper result = dao.getEsperById(13);
-		assertEquals("Zodiark", result.getEsperName());
+	public void testGetUnlockerById() {
+		Unlocker result = dao.getUnlockerById(18);
+		assertEquals("Zodiark", result.getUnlockerName());
+		assertEquals("Esper", result.getUnlockerType().getUnlockerType());
 	}
 	
 	@Test
@@ -56,14 +58,8 @@ public class DaoTest {
 	
 	@Test
 	public void testGetAllQuickenings() {
-		List<Quickening> result = dao.getAllQuickenings();
+		List<Unlocker> result = dao.getAllQuickenings();
 		assertEquals(4, result.size());
-	}
-	
-	@Test
-	public void testGetQuickeningById() {
-		Quickening result = dao.getQuickeningById(4);
-		assertEquals(125, result.getLpCost());
 	}
 	
 	@Test
