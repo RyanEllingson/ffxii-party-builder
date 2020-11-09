@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import controllers.Espers;
 import controllers.Jobs;
 import controllers.Licenses;
+import controllers.Parties;
 import controllers.Quickenings;
 import controllers.Regions;
 import controllers.Unlockers;
@@ -34,6 +35,8 @@ public class GetRequestHelper {
 			Regions.getRegionById(req, res);
 		} else if (uri.matches("/api/unlockers/(.*)")) {
 			Unlockers.getUnlockerById(req, res);
+		} else if (uri.matches("/api/party")) {
+			Parties.getParty(req, res);
 		}
 	}
 }
