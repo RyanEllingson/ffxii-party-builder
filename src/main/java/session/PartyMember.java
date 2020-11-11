@@ -74,7 +74,7 @@ public class PartyMember {
 		}
 	}
 	
-	private void populateAvailableRegions(Dao dao) {
+	public void populateAvailableRegions(Dao dao) {
 		this.availableRegions.clear();
 		if (this.job1 != null) {
 			this.availableRegions.add(dao.getRegionsByJob(this.job1.getJobId()).get(0));
@@ -143,6 +143,42 @@ public class PartyMember {
 		this.job2 = job2;
 		populateAllRegions(dao);
 		populateAvailableRegions(dao);
+	}
+	
+	public boolean addQuickening(int quickeningId, Dao dao) {
+		boolean quickeningAvailable = false;
+		if (this.quickenings.size() < 3) {
+			boolean alreadyAdded = false;
+			for (Unlocker quickening : this.quickenings) {
+				if (quickening.getUnlockerId() == quickeningId) {
+					alreadyAdded = true;
+				}
+			}
+			Unlocker quickening = dao.getUnlockerById(quickeningId);
+			if (quickening.getUnlockerId() > 0 && quickening.getUnlockerType().getUnlockerTypeId() == 2 && !alreadyAdded) {
+				quickeningAvailable = true;
+				this.quickenings.add(quickening);
+				populateAvailableRegions(dao);
+			}
+		}
+		return quickeningAvailable;
+	}
+	
+	public boolean removeQuickening(int quickeningId, Dao dao) {
+		boolean hasQuickening = false;
+		int index = -1;
+		for (int i=0; i<this.quickenings.size(); i++) {
+			if (this.quickenings.get(i).getUnlockerId() == quickeningId) {
+				index = i;
+				hasQuickening = true;
+				break;
+			}
+		}
+		if (hasQuickening) {
+			this.quickenings.remove(index);
+			populateAvailableRegions(dao);
+		}
+		return hasQuickening;
 	}
 
 	public List<Region> getAllRegions() {

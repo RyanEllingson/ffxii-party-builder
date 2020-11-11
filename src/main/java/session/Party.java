@@ -36,4 +36,44 @@ public class Party {
 	public List<Unlocker> getAvailableEspers() {
 		return this.availableEspers;
 	}
+	
+	public boolean assignEsper(int esperId, String memberName, Dao dao) {
+		boolean esperAvailable = false;
+		Unlocker chosenEsper = null;
+		int index = -1;
+		for (int i=0; i<this.availableEspers.size(); i++) {
+			if (this.availableEspers.get(i).getUnlockerId() == esperId) {
+				chosenEsper = this.availableEspers.get(i);
+				index = i;
+				esperAvailable = true;
+			}
+		}
+		if (esperAvailable) {
+			this.members.get(memberName).getEspers().add(chosenEsper);
+			this.availableEspers.remove(index);
+			this.members.get(memberName).populateAvailableRegions(dao);
+		}
+		return esperAvailable;
+	}
+	
+	public boolean unassignEsper(int esperId, String memberName, Dao dao) {
+		boolean esperAssigned = false;
+		Unlocker chosenEsper = null;
+		int index = -1;
+		PartyMember member = this.members.get(memberName);
+		for (int i=0; i<member.getEspers().size(); i++) {
+			if (member.getEspers().get(i).getUnlockerId() == esperId) {
+				index = i;
+				chosenEsper = member.getEspers().get(i);
+				esperAssigned = true;
+				break;
+			}
+		}
+		if (esperAssigned) {
+			member.getEspers().remove(index);
+			this.availableEspers.add(chosenEsper);
+			member.populateAvailableRegions(dao);
+		}
+		return esperAssigned;
+	}
 }
