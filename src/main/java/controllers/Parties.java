@@ -57,4 +57,30 @@ public class Parties {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void unassignEsper(HttpServletRequest req, HttpServletResponse res) {
+		try {
+			Connection conn = ConnectionFactory.getConnection();
+			Dao dao = new DaoImpl(conn);
+			ObjectMapper om = new ObjectMapper();
+			JsonNode jsonNode = om.readTree(req.getReader());
+			HttpSession session = req.getSession();
+			if (session == null) {
+				res.setStatus(400);
+			} else {
+				Party party = (Party) session.getAttribute("party");
+				int esperId = jsonNode.get("esperId").asInt();
+				String memberName = jsonNode.get("memberName").asText();
+				if (party.unassignEsper(esperId, memberName, dao)) {
+					session.setAttribute("party", party);
+					res.setStatus(200);
+					res.getWriter().write(om.writeValueAsString(party));
+				} else {
+					res.setStatus(400);
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -100,4 +100,31 @@ public class PartyMembers {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void removeQuickening(HttpServletRequest req, HttpServletResponse res) {
+		try {
+			Connection conn = ConnectionFactory.getConnection();
+			Dao dao = new DaoImpl(conn);
+			ObjectMapper om = new ObjectMapper();
+			JsonNode jsonNode = om.readTree(req.getReader());
+			HttpSession session = req.getSession(false);
+			if (session == null) {
+				res.setStatus(400);
+			} else {
+				int quickeningId = jsonNode.get("quickeningId").asInt();
+				String memberName = jsonNode.get("memberName").asText();
+				Party party = (Party) session.getAttribute("party");
+				PartyMember member = party.getMembers().get(memberName);
+				if (member.removeQuickening(quickeningId, dao)) {
+					session.setAttribute("party", party);
+					res.setStatus(200);
+					res.getWriter().write(om.writeValueAsString(party));
+				} else {
+					res.setStatus(400);
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

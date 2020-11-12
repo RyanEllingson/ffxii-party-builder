@@ -90,12 +90,4 @@ public class DaoTest {
 		assertEquals(3, result.size());
 	}
 	
-	@AfterClass
-	public static void cleanup() {
-		try {
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 }

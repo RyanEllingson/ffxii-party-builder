@@ -100,13 +100,5 @@ public class PartyTest {
 		assertEquals(0, balthier.getQuickenings().size());
 		assertEquals(false, balthier.removeQuickening(5, dao));
 	}
-	
-	@AfterClass
-	public static void cleanup() {
-		try {
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
+
 }
