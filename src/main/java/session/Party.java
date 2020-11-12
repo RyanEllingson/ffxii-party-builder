@@ -1,12 +1,14 @@
 package session;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import dao.Dao;
 import models.Unlocker;
+import util.UnlockerComparator;
 
 public class Party {
 
@@ -37,9 +39,14 @@ public class Party {
 		return this.availableEspers;
 	}
 	
+	private void sortEspers(List<Unlocker> espers) {
+		Collections.sort(espers, new UnlockerComparator());
+	}
+	
 	public boolean assignEsper(int esperId, String memberName, Dao dao) {
 		boolean esperAvailable = false;
 		Unlocker chosenEsper = null;
+		PartyMember member = this.members.get(memberName);
 		int index = -1;
 		for (int i=0; i<this.availableEspers.size(); i++) {
 			if (this.availableEspers.get(i).getUnlockerId() == esperId) {
@@ -48,10 +55,11 @@ public class Party {
 				esperAvailable = true;
 			}
 		}
-		if (esperAvailable) {
-			this.members.get(memberName).getEspers().add(chosenEsper);
+		if (esperAvailable && !(member == null)) {
+			member.getEspers().add(chosenEsper);
 			this.availableEspers.remove(index);
-			this.members.get(memberName).populateAvailableRegions(dao);
+			sortEspers(member.getEspers());
+			member.populateAvailableRegions(dao);
 		}
 		return esperAvailable;
 	}
@@ -72,6 +80,7 @@ public class Party {
 		if (esperAssigned) {
 			member.getEspers().remove(index);
 			this.availableEspers.add(chosenEsper);
+			sortEspers(this.availableEspers);
 			member.populateAvailableRegions(dao);
 		}
 		return esperAssigned;

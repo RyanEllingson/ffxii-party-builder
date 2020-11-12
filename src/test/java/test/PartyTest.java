@@ -66,9 +66,9 @@ public class PartyTest {
 	@Test
 	public void testInitialPopulateLicenses() {
 		PartyMember vaan = party.getMembers().get("Vaan");
-		assertEquals(16, vaan.getLicenses().get("Augmentations").get("Battle Lore").keySet().size());
+		assertEquals(16, vaan.getLicenses().get("Augmentations").get("Battle Lore").size());
 		assertNull(vaan.getLicenses().get("White Magick"));
-		assertEquals(1, vaan.getLicenses().get("Augmentations").get("Phoenix Lore").keySet().size());
+		assertEquals(1, vaan.getLicenses().get("Augmentations").get("Phoenix Lore").size());
 	}
 	
 	@Test
@@ -76,7 +76,7 @@ public class PartyTest {
 		PartyMember ashe = party.getMembers().get("Ashe");
 		assertEquals(1, ashe.getEspers().size());
 		assertEquals(2, ashe.getAvailableRegions().size());
-		assertEquals(1, ashe.getLicenses().get("White Magick").get("White Magick").keySet().size());
+		assertEquals(1, ashe.getLicenses().get("White Magick").get("White Magick").size());
 		assertEquals(false, party.assignEsper(12, "Balthier", dao));
 		assertEquals(12, party.getAvailableEspers().size());
 		assertEquals(true, party.unassignEsper(12, "Ashe", dao));
@@ -94,9 +94,9 @@ public class PartyTest {
 		assertEquals("Quickening 4", balthier.getQuickenings().get(0).getUnlockerName());
 		assertEquals(false, balthier.addQuickening(5, dao));
 		assertEquals(1, balthier.getQuickenings().size());
-		assertEquals(2, balthier.getLicenses().get("Augmentations").get("Phoenix Lore").keySet().size());
+		assertEquals(2, balthier.getLicenses().get("Augmentations").get("Phoenix Lore").size());
 		assertEquals(true, balthier.removeQuickening(5, dao));
-		assertEquals(1, balthier.getLicenses().get("Augmentations").get("Phoenix Lore").keySet().size());
+		assertEquals(1, balthier.getLicenses().get("Augmentations").get("Phoenix Lore").size());
 		assertEquals(0, balthier.getQuickenings().size());
 		assertEquals(false, balthier.removeQuickening(5, dao));
 	}
