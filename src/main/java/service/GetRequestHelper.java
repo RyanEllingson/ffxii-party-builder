@@ -1,5 +1,9 @@
 package service;
 
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -37,6 +41,13 @@ public class GetRequestHelper {
 			Unlockers.getUnlockerById(req, res);
 		} else if (uri.matches("/api/party")) {
 			Parties.getParty(req, res);
+		} else {
+			try {
+				RequestDispatcher redir = req.getRequestDispatcher("/index.html");
+				redir.forward(req, res);
+			} catch (ServletException | IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4 mb-3" *ngFor="let member of members">
+            <app-member-card-home [name]="this.partyService.party.members[member].memberName" [job1]="this.partyService.party.members[member].job1" [job2]="this.partyService.party.members[member].job2"></app-member-card-home>
+        </div>
+    </div>
+</div>

@@ -2,18 +2,15 @@ package session;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import dao.Dao;
 import models.Job;
 import models.License;
 import models.Region;
 import models.Unlocker;
-import util.LicenseComparator;
+import util.LicenseList;
 import util.UnlockerComparator;
 
 public class PartyMember {
@@ -24,8 +21,7 @@ public class PartyMember {
 	private Job job2;
 	private List<Region> allRegions;
 	private List<Region> availableRegions;
-	private Set<Integer> licenseSet;
-	private Map<String, Map<String, List<License>>> licenses;
+	private LicenseList licenses;
 	private List<Unlocker> quickenings;
 	private List<Unlocker> espers;
 	
@@ -35,47 +31,8 @@ public class PartyMember {
 		this.memberName = memberName;
 		this.allRegions = new ArrayList<>();
 		this.availableRegions = new ArrayList<>();
-		this.licenseSet = new HashSet<>();
-		this.licenses = new HashMap<>();
 		this.quickenings = new ArrayList<>();
 		this.espers = new ArrayList<>();
-	}
-	
-	private void sortLicenses() {
-		for (String licenseType : this.licenses.keySet()) {
-			for (String licenseSubType : this.licenses.get(licenseType).keySet()) {
-				Collections.sort(this.licenses.get(licenseType).get(licenseSubType), new LicenseComparator());
-			}
-		}
-	}
-	
-	private void populateLicenses() {
-		this.licenseSet.clear();
-		this.licenses.clear();
-		for (Region region : this.availableRegions) {
-			for (License license : region.getLicenses()) {
-				String licenseType = license.getLicenseType().getLicenseType();
-				String licenseSubtype = license.getSubtype();
-				if (this.licenses.keySet().contains(licenseType)) {
-					if (this.licenses.get(licenseType).keySet().contains(licenseSubtype)) {
-						if (!this.licenseSet.contains(license.getLicenseId())) {
-							this.licenseSet.add(license.getLicenseId());
-							this.licenses.get(licenseType).get(licenseSubtype).add(license);
-						}
-					} else {
-						this.licenseSet.add(license.getLicenseId());
-						this.licenses.get(licenseType).put(licenseSubtype, new ArrayList<>());
-						this.licenses.get(licenseType).get(licenseSubtype).add(license);
-					}
-				} else {
-					this.licenseSet.add(license.getLicenseId());
-					this.licenses.put(licenseType, new HashMap<>());
-					this.licenses.get(licenseType).put(licenseSubtype, new ArrayList<>());
-					this.licenses.get(licenseType).get(licenseSubtype).add(license);
-				}
-			}
-		}
-		sortLicenses();
 	}
 	
 	private void populateAllRegions(Dao dao) {
@@ -134,7 +91,7 @@ public class PartyMember {
 				}
 			}
 		}
-		populateLicenses();
+		this.licenses = new LicenseList(this.availableRegions);
 	}
 
 	public int getMemberId() {
@@ -213,13 +170,9 @@ public class PartyMember {
 	public List<Region> getAvailableRegions() {
 		return availableRegions;
 	}
-	
-	public Set<Integer> getLicenseSet() {
-		return licenseSet;
-	}
 
 	public Map<String, Map<String, List<License>>> getLicenses() {
-		return licenses;
+		return licenses.getLicenses();
 	}
 
 	public List<Unlocker> getQuickenings() {
@@ -233,7 +186,7 @@ public class PartyMember {
 	@Override
 	public String toString() {
 		return "PartyMember [memberId=" + memberId + ", memberName=" + memberName + ", job1=" + job1 + ", job2=" + job2
-				+ ", allRegions=" + allRegions + ", availableRegions=" + availableRegions + ", licenseSet=" + licenseSet
+				+ ", allRegions=" + allRegions + ", availableRegions=" + availableRegions 
 				+ ", licenses=" + licenses + ", quickenings=" + quickenings + ", espers=" + espers + "]";
 	}
 
