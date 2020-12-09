@@ -1,15 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import MemberCard from "../MemberCard";
 
 const Home = function() {
+    const [party, setParty] = useState(null);
+
     useEffect(() => {
         axios.get("/api/party").then(function(response) {
-            console.log(response.data);
+            setParty(response.data);
         });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const memberList = party ? Object.keys(party.members).map((member) => {
+        return (<div className="col-4 mb-3">
+            <MemberCard
+                name={member}
+                job1={party.members[member].job1}
+                job2={party.members[member].job2}
+            />
+        </div>)
+    }) : null;
+
     return (
-        <h1 className="text-center">hello</h1>
+        <div className="container">
+            <div className="row mt-5">
+                {memberList}
+            </div>
+        </div>
     );
 }
 
