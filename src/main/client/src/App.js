@@ -1,10 +1,20 @@
+import Home from "./components/Home";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-center">This is a Bootstrappy React app</h1>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

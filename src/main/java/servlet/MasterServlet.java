@@ -15,7 +15,10 @@ import service.PutRequestHelper;
 
 @WebServlet(
 		urlPatterns= {
-				"/api/*"
+				"/api/*",
+				"/login",
+				"/register",
+				"/currencies"
 		})
 public class MasterServlet extends HttpServlet {
 

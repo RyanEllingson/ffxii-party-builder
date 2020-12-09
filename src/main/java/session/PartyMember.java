@@ -33,6 +33,7 @@ public class PartyMember {
 		this.availableRegions = new ArrayList<>();
 		this.quickenings = new ArrayList<>();
 		this.espers = new ArrayList<>();
+		this.licenses = new LicenseList(this.availableRegions);
 	}
 	
 	private void populateAllRegions(Dao dao) {

@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
-private static Connection conn;
+	private static Connection conn;
 	
 	public static Connection getConnection() {
 		if (conn == null) {

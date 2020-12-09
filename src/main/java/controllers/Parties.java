@@ -23,10 +23,14 @@ public class Parties {
 			Dao dao = new DaoImpl(conn);
 			ObjectMapper om = new ObjectMapper();
 			HttpSession session = req.getSession();
+			Party party;
 			if (session.getAttribute("party") == null) {
-				session.setAttribute("party", new Party(dao));
+				party = new Party(dao);
+				session.setAttribute("party", party);
+			} else {
+				party = (Party) session.getAttribute("party");
 			}
-			res.getWriter().write(om.writeValueAsString((Party) session.getAttribute("party")));
+			res.getWriter().write(om.writeValueAsString(party));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
