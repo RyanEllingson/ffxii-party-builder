@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import LicenseList from "../LicenseList";
 
 const MemberDetails = function({member, handleBack, setParty}) {
     const [jobList, setJobList] = useState([]);
@@ -59,6 +60,8 @@ const MemberDetails = function({member, handleBack, setParty}) {
                             <h5 className="card-title">{member.memberName}</h5>
                             <p className="card-text">Job 1: {member.job1 ? member.job1.jobName : "None"}</p>
                             <p className="card-text">Job 2: {member.job2 ? member.job2.jobName : "None"}</p>
+                            <p className="card-text">Licenses:</p>
+                            <LicenseList licenses={member.licenses} />
                         </div>
                     </div>
                 </div>
