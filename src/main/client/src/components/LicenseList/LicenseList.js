@@ -35,23 +35,6 @@ const LicenseList = function({licenses}) {
                     })}
                 </div>
             </div>
-            {/* <li className="list-group-item" key={licenseType}>{licenseType}</li>
-            <ul className="list-group">
-                {Object.keys(licenses[licenseType]).map((licenseSubtype) => {
-                    return (
-                    <>
-                        <li className="list-group-item" key={licenseSubtype}>{licenseSubtype}</li>
-                        <ul className="list-group">
-                            {licenses[licenseType][licenseSubtype].map((license) => {
-                                return (
-                                    <li className="list-group-item" key={license.licenseId}>{license.licenseName}</li>
-                                );
-                            })}
-                        </ul>
-                    </>
-                    );
-                })}
-            </ul> */}
             </>
         );
     });
@@ -60,9 +43,6 @@ const LicenseList = function({licenses}) {
         <div className="accordion" id="accordion">
             {licenseTypeList}
         </div>
-        // <ul className="list-group">
-        //     {licenseList}
-        // </ul>
     );
 };
 

@@ -6,11 +6,15 @@ const MemberDetails = function({member, handleBack, setParty}) {
     const [jobList, setJobList] = useState([]);
     const [job1Choice, setJob1Choice] = useState(0);
     const [job2Choice, setJob2Choice] = useState(0);
+    const [quickeningList, setQuickeningList] = useState([]);
+    const [quickeningChoice, setQuickeningChoice] = useState(0);
 
     useEffect(() => {
         axios.get("/api/jobs").then(function(response) {
-            console.log(response.data);
             setJobList(response.data);
+        });
+        axios.get("/api/quickenings").then(function(response) {
+            setQuickeningList(response.data);
         })
         console.log(member);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -19,6 +23,21 @@ const MemberDetails = function({member, handleBack, setParty}) {
     const jobOptions = jobList.map((job) => {
         return (
             <option key={job.jobId} value={job.jobId}>{job.jobName}</option>
+        );
+    });
+
+    const quickeningOptions = quickeningList.map((quickening) => {
+        return (
+            <option key={quickening.unlockerId} value={quickening.unlockerId}>{quickening.unlockerName}</option>
+        );
+    });
+
+    const memberQuickenings = member.quickenings.map((quickening) => {
+        return (
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+                {quickening.unlockerName}
+                <button className="badge badge-danger badge-pill" onClick={(e)=>{handleDeleteQuickening(e, quickening.unlockerId)}}>Remove</button>
+            </li>
         );
     });
 
@@ -46,6 +65,27 @@ const MemberDetails = function({member, handleBack, setParty}) {
         });
     };
 
+    const handleAddQuickening = function(event) {
+        event.preventDefault();
+        axios.post("/api/quickening", {
+            memberName: member.memberName,
+            quickeningId: quickeningChoice
+        })
+        .then(function(response) {
+            setParty(response.data);
+            handleBack(event);
+        });
+    };
+
+    const handleDeleteQuickening = function(event, quickeningId) {
+        event.preventDefault();
+        axios.delete(`/api/quickening/member=${member.memberName}&quickeningId=${quickeningId}`)
+        .then(function(response) {
+            setParty(response.data);
+            handleBack(event);
+        });
+    };
+
     return (
         <div className="col-12">
             <div className="row mb-3">
@@ -60,13 +100,17 @@ const MemberDetails = function({member, handleBack, setParty}) {
                             <h5 className="card-title">{member.memberName}</h5>
                             <p className="card-text">Job 1: {member.job1 ? member.job1.jobName : "None"}</p>
                             <p className="card-text">Job 2: {member.job2 ? member.job2.jobName : "None"}</p>
+                            <p className="card-text">Quickenings:</p>
+                            <ul className="list-group">
+                                {memberQuickenings}
+                            </ul>
                             <p className="card-text">Licenses:</p>
                             <LicenseList licenses={member.licenses} />
                         </div>
                     </div>
                 </div>
                 <div className="col-6">
-                    <div className="card">
+                    <div className="card mb-3">
                         <div className="card-body">
                             <form>
                                 <div className="form-group">
@@ -84,6 +128,20 @@ const MemberDetails = function({member, handleBack, setParty}) {
                                         {jobOptions}
                                     </select>
                                     <button className="btn btn-primary" onClick={(e)=>{handleSelectJob2(e)}}>Set Job 2</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <div className="card-body">
+                            <form>
+                                <div className="form-group">
+                                    <label htmlFor="quickening-select">Add a quickening</label>
+                                    <select className="form-control mb-3" id="quickening-select" value={quickeningChoice} onChange={(e)=>{setQuickeningChoice(e.target.value)}}>
+                                        <option value={0}>Select a quickening</option>
+                                        {quickeningOptions}
+                                    </select>
+                                    <button className="btn btn-primary" onClick={(e)=>{handleAddQuickening(e)}}>Add Quickening</button>
                                 </div>
                             </form>
                         </div>

@@ -111,8 +111,12 @@ public class PartyMembers {
 			if (session == null) {
 				res.setStatus(400);
 			} else {
-				int quickeningId = jsonNode.get("quickeningId").asInt();
-				String memberName = jsonNode.get("memberName").asText();
+				String uri = req.getRequestURI();
+				String[] params = uri.split("/");
+				String memberName = params[3].split("&")[0].split("=")[1];
+				int quickeningId = Integer.parseInt(params[3].split("&")[1].split("=")[1]);
+//				int quickeningId = jsonNode.get("quickeningId").asInt();
+//				String memberName = jsonNode.get("memberName").asText();
 				Party party = (Party) session.getAttribute("party");
 				PartyMember member = party.getMembers().get(memberName);
 				if (member.removeQuickening(quickeningId, dao)) {
