@@ -11,7 +11,6 @@ const Home = function() {
     useEffect(() => {
         axios.get("/api/party").then(function(response) {
             setParty(response.data);
-            console.log(response.data);
         });
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -43,7 +42,7 @@ const Home = function() {
     return (
         <div className="container">
             <div className="row mt-5">
-                {displayDetails ? <MemberDetails member={chosenMember} handleBack={handleBack} setParty={setParty} availableEspers={party.availableEspers}/> : memberList}
+                {displayDetails ? <MemberDetails chosenMember={chosenMember} handleBack={handleBack} party={party} setParty={setParty} availableEspers={party.availableEspers}/> : memberList}
             </div>
         </div>
     );

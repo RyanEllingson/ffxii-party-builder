@@ -2,13 +2,15 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import LicenseList from "../LicenseList";
 
-const MemberDetails = function({member, handleBack, setParty, availableEspers}) {
+const MemberDetails = function({chosenMember, handleBack, setParty, availableEspers}) {
     const [jobList, setJobList] = useState([]);
     const [job1Choice, setJob1Choice] = useState(0);
     const [job2Choice, setJob2Choice] = useState(0);
     const [quickeningList, setQuickeningList] = useState([]);
     const [quickeningChoice, setQuickeningChoice] = useState(0);
     const [esperChoice, setEsperChoice] = useState(0);
+    const [member, setMember] = useState(chosenMember);
+    const [espers, setEspers] = useState(availableEspers);
 
     useEffect(() => {
         axios.get("/api/jobs").then(function(response) {
@@ -16,8 +18,7 @@ const MemberDetails = function({member, handleBack, setParty, availableEspers}) 
         });
         axios.get("/api/quickenings").then(function(response) {
             setQuickeningList(response.data);
-        })
-        console.log(member);
+        });
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
@@ -33,7 +34,7 @@ const MemberDetails = function({member, handleBack, setParty, availableEspers}) 
         );
     });
 
-    const esperOptions = availableEspers.map((esper) => {
+    const esperOptions = espers.map((esper) => {
         return (
             <option key={esper.unlockerId} value={esper.unlockerId}>{esper.unlockerName}</option>
         );
@@ -65,7 +66,7 @@ const MemberDetails = function({member, handleBack, setParty, availableEspers}) 
         })
         .then(function(response) {
             setParty(response.data);
-            handleBack(event);
+            setMember(response.data.members[member.memberName]);
         });
     };
 
@@ -77,7 +78,7 @@ const MemberDetails = function({member, handleBack, setParty, availableEspers}) 
         })
         .then(function(response) {
             setParty(response.data);
-            handleBack(event);
+            setMember(response.data.members[member.memberName]);
         });
     };
 
@@ -89,7 +90,7 @@ const MemberDetails = function({member, handleBack, setParty, availableEspers}) 
         })
         .then(function(response) {
             setParty(response.data);
-            handleBack(event);
+            setMember(response.data.members[member.memberName]);
         });
     };
 
@@ -101,7 +102,8 @@ const MemberDetails = function({member, handleBack, setParty, availableEspers}) 
         })
         .then(function(response) {
             setParty(response.data);
-            handleBack(event);
+            setEspers(response.data.availableEspers);
+            setMember(response.data.members[member.memberName]);
         });
     };
 
@@ -110,7 +112,7 @@ const MemberDetails = function({member, handleBack, setParty, availableEspers}) 
         axios.delete(`/api/quickening/member=${member.memberName}&quickeningId=${quickeningId}`)
         .then(function(response) {
             setParty(response.data);
-            handleBack(event);
+            setMember(response.data.members[member.memberName]);
         });
     };
 
@@ -119,7 +121,8 @@ const MemberDetails = function({member, handleBack, setParty, availableEspers}) 
         axios.delete(`/api/esper/member=${member.memberName}&esperId=${esperId}`)
         .then(function(response) {
             setParty(response.data);
-            handleBack(event);
+            setEspers(response.data.availableEspers);
+            setMember(response.data.members[member.memberName]);
         });
     };
 

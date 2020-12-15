@@ -3,7 +3,6 @@ import React from "react";
 const LicenseList = function({licenses}) {
     const licenseTypeList = Object.keys(licenses).map((licenseType) => {
         return (
-            <>
             <div className="card" key={licenseType}>
                 <div className="card-header bg-secondary">
                     <h2 className="mb-0">
@@ -35,7 +34,6 @@ const LicenseList = function({licenses}) {
                     })}
                 </div>
             </div>
-            </>
         );
     });
 
