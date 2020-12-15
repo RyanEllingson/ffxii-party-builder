@@ -19,12 +19,12 @@ const Home = function() {
         event.preventDefault();
         setChosenMember(member);
         setDisplayDetails(true);
-    }
+    };
 
     const handleBack = function(event) {
         event.preventDefault();
         setDisplayDetails(false);
-    }
+    };
 
     const memberList = party ? Object.keys(party.members).map((member) => {
         return (

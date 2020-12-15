@@ -9,7 +9,7 @@ const MemberCard = function({name, job1, job2, onClick}) {
                 <p className="card-text">Job 2: {job2 ? job2.jobName : "None"}</p>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default MemberCard;

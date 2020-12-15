@@ -42,7 +42,7 @@ const MemberDetails = function({chosenMember, handleBack, setParty, availableEsp
 
     const memberQuickenings = member.quickenings.map((quickening) => {
         return (
-            <li className="list-group-item d-flex justify-content-between align-items-center">
+            <li className="list-group-item d-flex justify-content-between align-items-center" key={quickening.unlockerId}>
                 {quickening.unlockerName}
                 <button className="badge badge-danger badge-pill" onClick={(e)=>{handleDeleteQuickening(e, quickening.unlockerId)}}>Remove</button>
             </li>
@@ -51,7 +51,7 @@ const MemberDetails = function({chosenMember, handleBack, setParty, availableEsp
 
     const memberEspers = member.espers.map((esper) => {
         return (
-            <li className="list-group-item d-flex justify-content-between align-items-center">
+            <li className="list-group-item d-flex justify-content-between align-items-center" key={esper.unlockerId}>
                 {esper.unlockerName}
                 <button className="badge badge-danger badge-pill" onClick={(e)=>{handleDeleteEsper(e, esper.unlockerId)}}>Remove</button>
             </li>
@@ -208,6 +208,6 @@ const MemberDetails = function({chosenMember, handleBack, setParty, availableEsp
             </div>
         </div>
     );
-}
+};
 
 export default MemberDetails;

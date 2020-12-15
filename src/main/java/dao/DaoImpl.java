@@ -110,7 +110,7 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<Region> getRegionsByJob(int jobId) {
 		List<Region> regions = new ArrayList<>();
-		String sql = "select region_id, job_id, description from regions where job_id = ?";
+		String sql = "select regions.region_id, regions.job_id, jobs.job_name, regions.description from regions inner join jobs on regions.job_id = jobs.job_id where regions.job_id = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, jobId);
@@ -120,6 +120,7 @@ public class DaoImpl implements Dao {
 						rs.getInt(1),
 						rs.getInt(2),
 						rs.getString(3),
+						rs.getString(4),
 						getLicensesByRegion(rs.getInt(1))
 						));
 			}
@@ -152,7 +153,7 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<Region> getRegionsByUnlocker(int unlockerId) {
 		List<Region> regions = new ArrayList<>();
-		String sql = "select regions.region_id, regions.job_id, regions.description from regions inner join unlocker_links on regions.region_id = unlocker_links.region_id where unlocker_links.unlocker_id = ?";
+		String sql = "select regions.region_id, regions.job_id, jobs.job_name, regions.description from regions inner join unlocker_links on regions.region_id = unlocker_links.region_id inner join jobs on regions.job_id = jobs.job_id where unlocker_links.unlocker_id = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, unlockerId);
@@ -162,6 +163,7 @@ public class DaoImpl implements Dao {
 						rs.getInt(1),
 						rs.getInt(2),
 						rs.getString(3),
+						rs.getString(4),
 						getLicensesByRegion(rs.getInt(1))
 						));
 			}
