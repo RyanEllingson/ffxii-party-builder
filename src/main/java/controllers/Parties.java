@@ -67,14 +67,15 @@ public class Parties {
 			Connection conn = ConnectionFactory.getConnection();
 			Dao dao = new DaoImpl(conn);
 			ObjectMapper om = new ObjectMapper();
-			JsonNode jsonNode = om.readTree(req.getReader());
 			HttpSession session = req.getSession();
 			if (session == null) {
 				res.setStatus(400);
 			} else {
+				String uri = req.getRequestURI();
+				String[] params = uri.split("/");
+				String memberName = params[3].split("&")[0].split("=")[1];
+				int esperId = Integer.parseInt(params[3].split("&")[1].split("=")[1]);
 				Party party = (Party) session.getAttribute("party");
-				int esperId = jsonNode.get("esperId").asInt();
-				String memberName = jsonNode.get("memberName").asText();
 				if (party.unassignEsper(esperId, memberName, dao)) {
 					session.setAttribute("party", party);
 					res.setStatus(200);

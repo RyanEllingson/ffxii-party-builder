@@ -2,12 +2,13 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import LicenseList from "../LicenseList";
 
-const MemberDetails = function({member, handleBack, setParty}) {
+const MemberDetails = function({member, handleBack, setParty, availableEspers}) {
     const [jobList, setJobList] = useState([]);
     const [job1Choice, setJob1Choice] = useState(0);
     const [job2Choice, setJob2Choice] = useState(0);
     const [quickeningList, setQuickeningList] = useState([]);
     const [quickeningChoice, setQuickeningChoice] = useState(0);
+    const [esperChoice, setEsperChoice] = useState(0);
 
     useEffect(() => {
         axios.get("/api/jobs").then(function(response) {
@@ -32,11 +33,26 @@ const MemberDetails = function({member, handleBack, setParty}) {
         );
     });
 
+    const esperOptions = availableEspers.map((esper) => {
+        return (
+            <option key={esper.unlockerId} value={esper.unlockerId}>{esper.unlockerName}</option>
+        );
+    });
+
     const memberQuickenings = member.quickenings.map((quickening) => {
         return (
             <li className="list-group-item d-flex justify-content-between align-items-center">
                 {quickening.unlockerName}
                 <button className="badge badge-danger badge-pill" onClick={(e)=>{handleDeleteQuickening(e, quickening.unlockerId)}}>Remove</button>
+            </li>
+        );
+    });
+
+    const memberEspers = member.espers.map((esper) => {
+        return (
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+                {esper.unlockerName}
+                <button className="badge badge-danger badge-pill" onClick={(e)=>{handleDeleteEsper(e, esper.unlockerId)}}>Remove</button>
             </li>
         );
     });
@@ -77,9 +93,30 @@ const MemberDetails = function({member, handleBack, setParty}) {
         });
     };
 
+    const handleAddEsper = function(event) {
+        event.preventDefault();
+        axios.post("/api/esper", {
+            memberName: member.memberName,
+            esperId: esperChoice
+        })
+        .then(function(response) {
+            setParty(response.data);
+            handleBack(event);
+        });
+    };
+
     const handleDeleteQuickening = function(event, quickeningId) {
         event.preventDefault();
         axios.delete(`/api/quickening/member=${member.memberName}&quickeningId=${quickeningId}`)
+        .then(function(response) {
+            setParty(response.data);
+            handleBack(event);
+        });
+    };
+
+    const handleDeleteEsper = function(event, esperId) {
+        event.preventDefault();
+        axios.delete(`/api/esper/member=${member.memberName}&esperId=${esperId}`)
         .then(function(response) {
             setParty(response.data);
             handleBack(event);
@@ -103,6 +140,10 @@ const MemberDetails = function({member, handleBack, setParty}) {
                             <p className="card-text">Quickenings:</p>
                             <ul className="list-group">
                                 {memberQuickenings}
+                            </ul>
+                            <p className="card-text">Espers:</p>
+                            <ul className="list-group">
+                                {memberEspers}
                             </ul>
                             <p className="card-text">Licenses:</p>
                             <LicenseList licenses={member.licenses} />
@@ -132,7 +173,7 @@ const MemberDetails = function({member, handleBack, setParty}) {
                             </form>
                         </div>
                     </div>
-                    <div className="card">
+                    <div className="card mb-3">
                         <div className="card-body">
                             <form>
                                 <div className="form-group">
@@ -142,6 +183,20 @@ const MemberDetails = function({member, handleBack, setParty}) {
                                         {quickeningOptions}
                                     </select>
                                     <button className="btn btn-primary" onClick={(e)=>{handleAddQuickening(e)}}>Add Quickening</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div className="card mb-3">
+                        <div className="card-body">
+                            <form>
+                                <div className="form-group">
+                                    <label htmlFor="esper-select">Add an esper</label>
+                                    <select className="form-control mb-3" id="esper-select" value={esperChoice} onChange={(e)=>{setEsperChoice(e.target.value)}}>
+                                        <option value={0}>Select an esper</option>
+                                        {esperOptions}
+                                    </select>
+                                    <button className="btn btn-primary" onClick={(e)=>{handleAddEsper(e)}}>Add Esper</button>
                                 </div>
                             </form>
                         </div>
