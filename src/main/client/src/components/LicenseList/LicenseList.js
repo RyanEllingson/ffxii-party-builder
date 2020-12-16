@@ -1,4 +1,5 @@
 import React from "react";
+import LicenseModal from "../LicenseModal";
 
 const LicenseList = function({licenses}) {
     const licenseTypeList = Object.keys(licenses).map((licenseType) => {
@@ -23,7 +24,7 @@ const LicenseList = function({licenses}) {
                                         <ul className="list-group list-group-flush">
                                             {licenses[licenseType][licenseSubtype].map((license) => {
                                                 return (
-                                                    <li className="list-group-item" key={license.licenseId}>{license.licenseName}</li>
+                                                    <LicenseModal key={license.licenseId} license={license} />
                                                 );
                                             })}
                                         </ul>

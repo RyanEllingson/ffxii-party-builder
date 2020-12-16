@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import LicenseModal from "../LicenseModal";
 
 const Espers = function() {
     const [espers, setEspers] = useState([]);
@@ -31,7 +32,7 @@ const Espers = function() {
                         <ul className="list-group list-group-flush">
                             {region.licenses.map((license) => {
                                 return (
-                                    <li className="list-group-item" key={license.licenseId}>{license.licenseName}</li>
+                                    <LicenseModal key={license.licenseId} license={license}/>
                                 );
                             })}
                         </ul>
